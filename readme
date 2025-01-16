@@ -1,0 +1,3 @@
+To run the DynamoDB
+
+java -Djava.library.path=C:\Users\Zeff\Downloads\dynamodb-local\DynamoDBLocal_lib -jar C:\Users\Zeff\Downloads\dynamodb-local\DynamoDBLocal.jar -sharedDb -port 8001
