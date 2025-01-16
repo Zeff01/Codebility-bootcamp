@@ -3,20 +3,28 @@
 import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { Bell, BookOpen } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const NonDashboardNavbar = () => {
   const { user } = useUser();
   const userRole = user?.publicMetadata?.userType as "student" | "teacher";
-  console.log("userRole:", userRole);
 
   return (
     <nav className="nondashboard-navbar">
       <div className="nondashboard-navbar__container">
         <div className="nondashboard-navbar__search">
+          <Image
+            src="/transparent_logo.png"
+            alt="logo"
+            width={25}
+            height={40}
+            className="app-sidebar__logo rounded-md"
+          />
+
           <Link href="/" className="nondashboard-navbar__brand" scroll={false}>
-            EDROH
+            Codebility Bootcamp
           </Link>
           <div className="flex items-center gap-4">
             <div className="relative group">

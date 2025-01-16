@@ -19,6 +19,7 @@ import {
   PanelLeft,
   Settings,
   User,
+  House,
 } from "lucide-react";
 import Loading from "./Loading";
 import Image from "next/image";
@@ -33,12 +34,14 @@ const AppSidebar = () => {
 
   const navLinks = {
     student: [
+      { icon: House, label: "Home", href: "/" },
       { icon: BookOpen, label: "Courses", href: "/user/courses" },
       { icon: Briefcase, label: "Billing", href: "/user/billing" },
       { icon: User, label: "Profile", href: "/user/profile" },
       { icon: Settings, label: "Settings", href: "/user/settings" },
     ],
     teacher: [
+      { icon: House, label: "Home", href: "/" },
       { icon: BookOpen, label: "Courses", href: "/teacher/courses" },
       { icon: DollarSign, label: "Billing", href: "/teacher/billing" },
       { icon: User, label: "Profile", href: "/teacher/profile" },
@@ -70,14 +73,15 @@ const AppSidebar = () => {
               <div className="app-sidebar__logo-container group">
                 <div className="app-sidebar__logo-wrapper">
                   <Image
-                    src="/logo.svg"
+                    src="/transparent_logo.png"
                     alt="logo"
                     width={25}
-                    height={20}
-                    className="app-sidebar__logo"
+                    height={40}
+                    className="app-sidebar__logo rounded-md"
                   />
                   <p className="app-sidebar__title">Codebility Bootcamp</p>
                 </div>
+
                 <PanelLeft className="app-sidebar__collapse-icon" />
               </div>
             </SidebarMenuButton>
@@ -87,7 +91,9 @@ const AppSidebar = () => {
       <SidebarContent>
         <SidebarMenu className="app-sidebar__nav-menu">
           {currentNavLinks.map((link) => {
-            const isActive = pathname.startsWith(link.href);
+            const isActive =
+              pathname === link.href || pathname.startsWith(`${link.href}/`);
+
             return (
               <SidebarMenuItem
                 key={link.href}
