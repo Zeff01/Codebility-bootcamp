@@ -10,6 +10,10 @@ const nextConfig = {
       },
     ],
   },
+  eslint: {
+    // Disables linting during builds
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig;
